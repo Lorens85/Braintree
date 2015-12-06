@@ -9,9 +9,15 @@
 <body>
 
 <% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Log out", sign_out_path %>
+  Signed in as <%= current_user.email %> | <%= link_to "Log out", sign_out_path %>
 <% else %>
   <%= link_to "Log in", sign_in_path %> | <%= link_to "Sign up", sign_up_path %>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <%= value %>
+  </div>
 <% end %>
 
 <%= yield %>
